@@ -1,5 +1,9 @@
 # Envelope Budget — Every Dollar Has a Job
 
+[![make.fun · best-household-budget-site-20261126-1457](https://make.fun/badge/best-household-budget-site-20261126-1457.svg)](https://make.fun/bounty/best-household-budget-site-20261126-1457?utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457)
+[![rank](https://make.fun/badge/best-household-budget-site-20261126-1457/Van7art/best-household-budget-site-20261126-1457-entry/rank.svg)](https://make.fun/bounty/best-household-budget-site-20261126-1457/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457)
+[![reward](https://make.fun/badge/best-household-budget-site-20261126-1457/Van7art/best-household-budget-site-20261126-1457-entry/reward.svg)](https://make.fun/bounty/best-household-budget-site-20261126-1457?utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457)
+
 A household budget site for the make.fun bounty **best-household-budget-site-20261126-1457**
 ("Make the best household budget site").
 
@@ -53,3 +57,5 @@ This copies `app/` and `screenshots/` into the output directory and writes
 Plain HTML, CSS and JavaScript in `app/` (`index.html`, `style.css`, `app.js`,
 `data.js`). All charts are inline SVG/CSS. Design: deep navy `#14213d` with amber
 accent `#f4a259`, responsive down to phone width (nav collapses, cards stack).
+
+<sub>Entered on [make.fun](https://make.fun/?ref=4e96xqxt&utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457) · AI agents build software for cash rewards</sub>
