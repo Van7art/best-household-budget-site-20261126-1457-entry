@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Envelope Budget — Every Dollar Has a Job | The Alvarez Family</title>
+<meta name="description" content="Envelope Budget helps the Alvarez family give every dollar a job: envelopes, transactions, a 50/30/20 planner, bills and reports — all in one household budget site.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand"><span class="logo">✉</span><span>Envelope Budget<small>THE ALVAREZ FAMILY · NOVEMBER 2026</small></span></div>
+    <span class="month-pill">November 2026</span>
+    <nav class="main" aria-label="Main navigation">
+      <a href="#/dashboard">Dashboard</a>
+      <a href="#/envelopes">Envelopes</a>
+      <a href="#/transactions">Transactions</a>
+      <a href="#/planner">50/30/20 Planner</a>
+      <a href="#/bills">Bills</a>
+      <a href="#/reports">Reports</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ DASHBOARD ============ -->
+  <section class="page" id="page-dashboard">
+    <div class="hero">
+      <div class="hero-row">
+        <div>
+          <h1>Good evening, Alvarez family</h1>
+          <p>Every dollar has a job — here's where November stands.</p>
+        </div>
+        <div class="hero-stat">
+          <small>Money to assign</small>
+          <div class="big" id="d-hero-left">$640</div>
+          <span class="muted" id="d-hero-note" style="color:#c8d3e6"></span>
+        </div>
+      </div>
+      <div class="assign-bar"><i id="d-assign-bar" style="width:89%"></i></div>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h3>Monthly income</h3><div class="value" id="d-income">$5,850</div><div class="sub">2 paydays in November</div></div>
+      <div class="card"><h3>Assigned</h3><div class="value" id="d-assigned">$5,210</div><div class="sub">Envelopes + savings goal</div></div>
+      <div class="card"><h3>Spent so far</h3><div class="value" id="d-spent">$4,210</div><div class="sub">Envelopes + other spending</div></div>
+      <div class="card accent"><h3>Left to assign</h3><div class="value" id="d-left">$640</div><div class="sub" id="d-left-sub">Give every dollar a job</div></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h2>Envelope fill</h2><a href="#/envelopes">Manage envelopes →</a></div>
+        <p class="muted">How much of each envelope is already spent this month.</p>
+        <div id="d-env-overview"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Upcoming bills</h2><a href="#/bills">All bills →</a></div>
+        <ul class="activity" id="d-bills"></ul>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>Recent activity</h2><a href="#/transactions">All transactions →</a></div>
+      <ul class="activity" id="d-activity"></ul>
+    </div>
+  </section>
+
+  <!-- ============ ENVELOPES ============ -->
+  <section class="page" id="page-envelopes">
+    <h1>Envelopes</h1>
+    <p class="muted">Split the month's money into envelopes. Spend from an envelope, never from the whole pile. <span id="env-summary"></span></p>
+    <div class="env-grid" id="env-grid"></div>
+    <p class="muted" style="margin-top:1rem">Tip: an over-spent envelope turns red. Cover it from Fun Money, or adjust what you assigned. Changes save in your browser automatically.</p>
+  </section>
+
+  <!-- ============ TRANSACTIONS ============ -->
+  <section class="page" id="page-transactions">
+    <h1>Transactions</h1>
+    <p class="muted">Every dollar in and out, November 2026. Adding a transaction deducts it from its envelope straight away.</p>
+    <div class="panel">
+      <h2>Add a transaction</h2>
+      <form id="tx-form">
+        <div class="form-grid">
+          <div><label for="tx-desc">Description</label><input id="tx-desc" type="text" placeholder="e.g. Market Fresh — groceries" required></div>
+          <div><label for="tx-amount">Amount ($)</label><input id="tx-amount" type="number" min="0.01" step="0.01" placeholder="42.50" required></div>
+          <div><label for="tx-env">Envelope</label><select id="tx-env"></select></div>
+          <div><label for="tx-date">Date</label><input id="tx-date" type="date" value="2026-11-26"></div>
+          <div><button type="submit" class="amber">Add</button></div>
+        </div>
+      </form>
+    </div>
+    <div class="toolbar">
+      <select id="tx-filter" aria-label="Filter by envelope"><option value="all">All envelopes</option><option value="income">Income</option><option value="other">Other</option></select>
+      <input id="tx-search" type="search" placeholder="Search transactions…" aria-label="Search transactions">
+    </div>
+    <p class="muted" id="tx-count"></p>
+    <div class="panel table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Description</th><th>Envelope</th><th class="num">Amount</th><th></th></tr></thead>
+        <tbody id="tx-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ PLANNER ============ -->
+  <section class="page" id="page-planner">
+    <h1>50 / 30 / 20 Planner</h1>
+    <p class="muted">The classic rule: 50% of income for needs, 30% for wants, 20% for savings. Slide the numbers to fit your family, then compare with what your envelopes actually hold.</p>
+    <div class="grid-2 equal">
+      <div class="panel">
+        <h2>Your plan</h2>
+        <div><label for="pl-income">Monthly income ($)</label><input id="pl-income" type="number" min="1" step="50" value="5850"></div>
+        <div class="slider-row"><label for="pl-needs">Needs</label><input id="pl-needs" type="range" min="0" max="100" value="50"><output id="pl-needs-out">50%</output></div>
+        <div class="slider-row"><label for="pl-wants">Wants</label><input id="pl-wants" type="range" min="0" max="100" value="30"><output id="pl-wants-out">30%</output></div>
+        <div class="slider-row"><label for="pl-savings">Savings</label><input id="pl-savings" type="range" min="0" max="100" value="20"><output id="pl-savings-out">20%</output></div>
+        <div class="plan-bar" aria-hidden="true"><i id="pl-bar-needs" style="width:50%;background:#14213d"></i><i id="pl-bar-wants" style="width:30%;background:#f4a259"></i><i id="pl-bar-savings" style="width:20%;background:#2a9d8f"></i></div>
+        <div class="legend"><span style="color:#14213d">Needs <b id="pl-needs-amt">$2,925</b></span><span style="color:#b06a1e">Wants <b id="pl-wants-amt">$1,755</b></span><span style="color:#14655c">Savings <b id="pl-savings-amt">$1,170</b></span></div>
+        <p class="muted" id="pl-total"></p>
+        <button id="pl-apply" class="amber">Apply plan to envelopes</button>
+        <button id="pl-reset" class="ghost">Reset to 50 / 30 / 20</button>
+      </div>
+      <div class="panel">
+        <h2>Plan vs. your envelopes</h2>
+        <p class="muted">What the plan suggests, next to what is actually assigned right now.</p>
+        <h3>Needs</h3><div id="cmp-needs"></div>
+        <h3>Wants</h3><div id="cmp-wants"></div>
+        <h3>Savings</h3><div id="cmp-savings"></div>
+        <p id="pl-advice" style="margin-top:1rem"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BILLS ============ -->
+  <section class="page" id="page-bills">
+    <h1>Bills</h1>
+    <p class="muted" id="bills-summary"></p>
+    <div class="panel">
+      <h2>November 2026</h2>
+      <div id="bills-nov"></div>
+    </div>
+    <div class="panel">
+      <h2>December 2026 — coming up</h2>
+      <div id="bills-dec"></div>
+    </div>
+  </section>
+
+  <!-- ============ REPORTS ============ -->
+  <section class="page" id="page-reports">
+    <h1>Reports</h1>
+    <p class="muted" id="rep-summary"></p>
+    <div class="panel">
+      <h2>Spending by envelope — November</h2>
+      <div id="rep-bars"></div>
+    </div>
+    <div class="grid-2 equal">
+      <div class="panel">
+        <h2>Month over month</h2>
+        <p class="muted">Total spending, September to November 2026.</p>
+        <div id="rep-trend"></div>
+      </div>
+      <div class="panel">
+        <h2>Rollover into December</h2>
+        <p class="muted">What's left in each envelope carries forward.</p>
+        <ul class="activity" id="rep-rollover"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Envelope Budget — built for the Alvarez family · All data stays in your browser (localStorage) ·
+  <button class="small ghost" id="reset-demo">Reset demo data</button>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
